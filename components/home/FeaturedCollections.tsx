@@ -24,7 +24,7 @@ const cardVariants = {
 };
 
 export default function FeaturedCollections() {
-  const { t } = useTranslation();
+  const { t, tp } = useTranslation();
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   const robesProduct = products.find(p => p.category === "Robe de Soirée" || p.category === "Robe");
@@ -33,22 +33,22 @@ export default function FeaturedCollections() {
 
   const collections = [
     {
-      title: "Robe de Soirée",
-      subtitle: "Collection Été",
+      title: tp("Robe de Soirée"),
+      subtitle: t.collectionSub,
       image: robesProduct?.colors[0]?.images?.[0] || robesProduct?.images?.[0] || "",
-      slug: "robe-de-soirée",
+      slug: "Robe%20de%20Soirée",
     },
     {
-      title: "Abaya",
-      subtitle: "Collection Été",
+      title: tp("Abaya"),
+      subtitle: t.collectionSub,
       image: abayaProduct?.colors[0]?.images?.[0] || abayaProduct?.images?.[0] || "",
-      slug: "abaya",
+      slug: "Abaya",
     },
     {
-      title: "Chemisier",
-      subtitle: "Collection Été",
+      title: tp("Chemisier"),
+      subtitle: t.collectionSub,
       image: chemisierProduct?.colors[0]?.images?.[0] || chemisierProduct?.images?.[0] || "",
-      slug: "chemisier",
+      slug: "Chemisier",
     },
   ];
 

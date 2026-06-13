@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { products } from "@/data/products";
 import ProductGrid from "@/components/shop/ProductGrid";
 import FilterSidebar from "@/components/shop/FilterSidebar";
+import ShopHeader from "@/components/shop/ShopHeader";
 
 export const metadata = {
   title: "Boutique | ALVINA",
@@ -39,15 +40,7 @@ export default function ShopPage({
 
   return (
     <main className="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto min-h-screen">
-      <div className="flex flex-col items-center justify-center mb-16 text-center">
-        <span className="text-gold tracking-[0.25em] text-xs uppercase font-medium mb-3 block">
-          {filtered.length} article{filtered.length > 1 ? "s" : ""}
-        </span>
-        <h1 className="font-serif text-4xl md:text-5xl tracking-widest uppercase mb-4">
-          Boutique
-        </h1>
-        <div className="w-16 h-px bg-gold" />
-      </div>
+      <ShopHeader count={filtered.length} />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
         <div className="col-span-1">

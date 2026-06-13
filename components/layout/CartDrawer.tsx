@@ -6,10 +6,12 @@ import Link from "next/link";
 import { useCartStore } from "@/store/cartStore";
 import { useLocaleStore } from "@/store/localeStore";
 import { useState, useEffect } from "react";
+import { useTranslation } from "@/lib/translations";
 
 export default function CartDrawer() {
   const { items, isOpen, toggleDrawer, updateQuantity, removeItem } = useCartStore();
   const { convertPrice, currency } = useLocaleStore();
+  const { t } = useTranslation();
   const [mounted, setMounted] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const fallbackImage =
@@ -55,7 +57,7 @@ export default function CartDrawer() {
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
-              <h2 className="font-serif text-2xl tracking-widest uppercase">Panier</h2>
+              <h2 className="font-serif text-2xl tracking-widest uppercase">{t.cartTitle}</h2>
               <button
                 onClick={toggleDrawer}
                 className="hover:text-gold transition-colors p-1"
@@ -69,12 +71,12 @@ export default function CartDrawer() {
             <div className="flex-1 overflow-y-auto p-6">
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full gap-4 text-[var(--text-secondary)]">
-                  <p>Votre panier est vide.</p>
+                  <p>{t.cartEmpty}</p>
                   <button
                     onClick={toggleDrawer}
                     className="text-[var(--text-primary)] underline uppercase tracking-widest text-sm hover:text-gold transition-colors"
                   >
-                    Continuer vos achats
+                    {t.cartContinue}
                   </button>
                 </div>
               ) : (
@@ -168,11 +170,11 @@ export default function CartDrawer() {
                 </AnimatePresence>
 
                 <div className="flex justify-between items-center mb-6 font-serif text-xl">
-                  <span>Sous-total</span>
+                  <span>{t.cartSubtotal}</span>
                   <span>{convertPrice(subtotal)}</span>
                 </div>
                 <p className="text-xs text-[var(--text-secondary)] mb-4 text-center">
-                  Livraison gratuite dès {convertPrice(300)}
+                  {t.cartFreeShipping} {convertPrice(300)}
                 </p>
                 <div className="flex flex-col gap-3">
                   <Link
@@ -180,13 +182,13 @@ export default function CartDrawer() {
                     onClick={toggleDrawer}
                     className="w-full border border-[var(--text-primary)] py-3 text-center uppercase tracking-widest text-sm hover:bg-[var(--text-primary)] hover:text-[var(--text-inverse)] transition-colors"
                   >
-                    Voir le panier
+                    {t.cartView}
                   </Link>
                   <button
                     onClick={handleCheckout}
                     className="w-full bg-gold hover:bg-[var(--gold-dark)] text-white py-3 text-center uppercase tracking-widest text-sm transition-colors"
                   >
-                    Passer la commande
+                    {t.cartCheckout}
                   </button>
                 </div>
               </div>

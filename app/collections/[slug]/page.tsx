@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/data/products";
 import ProductGrid from "@/components/shop/ProductGrid";
+import CollectionHeader from "@/components/shop/CollectionHeader";
 
 const collectionMeta: Record<string, { title: string, subtitle: string, image: string }> = {
   robes: {
@@ -50,12 +51,7 @@ export default function CollectionPage({ params }: { params: { slug: string } })
       </section>
 
       <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-12">
-          <p className="text-warm-gray">{collectionProducts.length} articles trouvés</p>
-          <Link href="/shop" className="text-xs tracking-widest uppercase border-b border-charcoal/20 dark:border-white/20 hover:border-gold transition-colors pb-1">
-            Retour à la boutique
-          </Link>
-        </div>
+        <CollectionHeader count={collectionProducts.length} />
         <ProductGrid products={collectionProducts} />
       </section>
     </main>

@@ -1,40 +1,44 @@
-const faqData = [
-  {
-    category: "Commande",
-    items: [
-      { q: "Comment passer une commande ?", a: "Ajoutez vos pièces au panier, validez vos options de taille et finalisez le paiement sécurisé." },
-      { q: "Puis-je modifier ma commande ?", a: "Une modification est possible dans l'heure suivant la validation, via notre service client." },
-    ],
-  },
-  {
-    category: "Livraison",
-    items: [
-      { q: "Quels sont les délais de livraison ?", a: "France et Europe: 2 à 5 jours ouvrés. International: 4 à 8 jours ouvrés." },
-      { q: "Proposez-vous la livraison express ?", a: "Oui, l'option express est disponible à l'étape de paiement selon la destination." },
-    ],
-  },
-  {
-    category: "Retours",
-    items: [
-      { q: "Quel est le délai de retour ?", a: "Vous disposez de 14 jours après réception pour demander un retour." },
-      { q: "Les articles soldés sont-ils retournables ?", a: "Les pièces soldées peuvent être échangées selon disponibilité, sauf mention contraire." },
-    ],
-  },
-  {
-    category: "Paiement",
-    items: [
-      { q: "Quels moyens de paiement acceptez-vous ?", a: "Cartes bancaires majeures, Apple Pay et autres options locales disponibles au checkout." },
-      { q: "Le paiement est-il sécurisé ?", a: "Toutes les transactions sont chiffrées via des prestataires conformes aux standards de sécurité." },
-    ],
-  },
-];
+"use client";
+import { useTranslation } from "@/lib/translations";
 
 export default function FaqPage() {
+  const { t } = useTranslation();
+
+  const faqData = [
+    {
+      category: t.faqCatOrder,
+      items: [
+        { q: t.faqQ1, a: t.faqA1 },
+        { q: t.faqQ2, a: t.faqA2 },
+      ],
+    },
+    {
+      category: t.faqCatShipping,
+      items: [
+        { q: t.faqQ3, a: t.faqA3 },
+        { q: t.faqQ4, a: t.faqA4 },
+      ],
+    },
+    {
+      category: t.faqCatReturns,
+      items: [
+        { q: t.faqQ5, a: t.faqA5 },
+        { q: t.faqQ6, a: t.faqA6 },
+      ],
+    },
+    {
+      category: t.faqCatPayment,
+      items: [
+        { q: t.faqQ7, a: t.faqA7 },
+        { q: t.faqQ8, a: t.faqA8 },
+      ],
+    },
+  ];
   return (
     <main className="pt-32 pb-24 px-6 md:px-12 max-w-5xl mx-auto min-h-screen">
       <header className="text-center mb-14">
-        <p className="text-gold tracking-[0.24em] uppercase text-xs mb-3">Service Client</p>
-        <h1 className="font-serif text-4xl md:text-5xl tracking-wide">FAQ</h1>
+        <p className="text-gold tracking-[0.24em] uppercase text-xs mb-3">{t.contactService}</p>
+        <h1 className="font-serif text-4xl md:text-5xl tracking-wide">{t.faqTitle}</h1>
       </header>
       <div className="space-y-8">
         {faqData.map((group) => (

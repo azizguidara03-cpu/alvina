@@ -7,15 +7,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
 import { useTranslation } from "@/lib/translations";
 
-const schema = z.object({
-  email: z.string().email({ message: "Veuillez entrer une adresse e-mail valide." }),
-});
-
-type FormValues = z.infer<typeof schema>;
-
 export default function NewsletterSection() {
   const [isSuccess, setIsSuccess] = useState(false);
   const { t } = useTranslation();
+
+  const schema = z.object({
+    email: z.string().email({ message: t.newsletterEmailInvalid }),
+  });
+
+  type FormValues = z.infer<typeof schema>;
+
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(schema),
   });

@@ -70,7 +70,7 @@ export default function LookbookSection() {
           <Link
             href={`/shop/${mainProduct.slug}`}
             className="lg:col-span-7 relative group block h-[500px] lg:h-[720px] overflow-hidden"
-            onMouseEnter={() => setCursorText("Voir")}
+            onMouseEnter={() => setCursorText(t.viewHover)}
             onMouseLeave={() => setCursorText("")}
           >
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500 z-10" />
@@ -100,7 +100,7 @@ export default function LookbookSection() {
                 key={product.id}
                 href={`/shop/${product.slug}`}
                 className="relative group block overflow-hidden"
-                onMouseEnter={() => setCursorText("Voir")}
+                onMouseEnter={() => setCursorText(t.viewHover)}
                 onMouseLeave={() => setCursorText("")}
               >
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/0 transition-colors duration-500 z-10" />

@@ -20,12 +20,12 @@ export default function FilterSidebar({
   const searchParams = useSearchParams();
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [isSlidingPrice, setIsSlidingPrice] = useState(false);
-  const { t } = useTranslation();
+  const { t, tp } = useTranslation();
   const { convertPrice, currency } = useLocaleStore();
 
   const categories = [
     { label: t.filterAll, value: "all" },
-    ...availableCategories.map(cat => ({ label: cat, value: cat }))
+    ...availableCategories.map(cat => ({ label: tp(cat), value: cat }))
   ];
 
   const currentSort = searchParams.get("sort") || "newest";

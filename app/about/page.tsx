@@ -4,9 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "@/lib/translations";
 
 export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -72,10 +74,10 @@ export default function AboutPage() {
             />
             {/* BUG #1 FIX: text-white is correct here — over dark overlay on image */}
             <h1 className="text-white font-serif text-5xl md:text-7xl tracking-widest uppercase mb-6">
-              Notre Héritage
+              {t.aboutHeroTitle}
             </h1>
             <p className="text-white/75 text-lg md:text-xl font-light italic font-serif">
-              &quot;La sophistication réside dans le moindre fil, la beauté dans l&apos;âme de notre culture.&quot;
+              {t.aboutHeroSub}
             </p>
           </div>
         </motion.div>
@@ -102,14 +104,14 @@ export default function AboutPage() {
               Depuis 2010
             </span>
             <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-widest mb-6 text-[var(--text-primary)]">
-              Notre Histoire
+              {t.aboutStoryTitle}
             </h2>
             <div className="h-px bg-gold w-16 mb-8" />
             <p className="text-[var(--text-secondary)] leading-loose mb-6">
-              Fondée à Istanbul au cœur du Bosphore, ALVINA est née d&apos;une ambition pure : marier le riche patrimoine de l&apos;artisanalité turque à la coupe exigeante de la haute couture contemporaine.
+              {t.aboutStoryP1}
             </p>
             <p className="text-[var(--text-secondary)] leading-loose">
-              De notre premier petit atelier aux vitrines internationales, nous n&apos;avons jamais perdu l&apos;essence de notre art : des finitions irréprochables, des matières nobles, et un profond respect pour la femme élégante et moderne.
+              {t.aboutStoryP2}
             </p>
           </div>
         </div>
@@ -121,14 +123,14 @@ export default function AboutPage() {
               Mode Modeste
             </span>
             <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-widest mb-6 text-[var(--text-primary)]">
-              Notre Vision
+              {t.aboutVisionTitle}
             </h2>
             <div className="h-px bg-gold w-16 mb-8" />
             <p className="text-[var(--text-secondary)] leading-loose mb-6">
-              Nous croyons que la mode modeste n&apos;est pas une contrainte, mais une toile vierge d&apos;expression absolue et d&apos;élégance poétique.
+              {t.aboutVisionP1}
             </p>
             <p className="text-[var(--text-secondary)] leading-loose">
-              Le luxe accessible à chaque femme, sans compromis sur ses valeurs — le raffinement dans le souffle des étoffes nobles.
+              {t.aboutVisionP2}
             </p>
           </div>
           <div className="order-1 md:order-2 relative aspect-[3/4] md:aspect-square overflow-hidden bg-champagne">
@@ -148,10 +150,10 @@ export default function AboutPage() {
       <section className="bg-champagne py-16 px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { value: "2010", label: "Fondée" },
-            { value: "50+", label: "Pays distribués" },
-            { value: "500+", label: "Modèles par saison" },
-            { value: "1M+", label: "Clientes satisfaites" },
+            { value: "2010", label: t.aboutStatsSince },
+            { value: "50+", label: t.aboutStatsCountries },
+            { value: "500+", label: t.aboutStatsModels },
+            { value: "1M+", label: t.aboutStatsClients },
           ].map((stat) => (
             <motion.div
               key={stat.label}
@@ -172,15 +174,15 @@ export default function AboutPage() {
       <section className="bg-[#111008] text-[#FAF7F2] py-24 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-serif text-center text-3xl md:text-4xl uppercase tracking-widest mb-16 text-[#FAF7F2]">
-            L&apos;Évolution
+            {t.aboutEvoTitle}
           </h2>
           <div className="relative border-l border-gold/30 pl-8 ml-4 md:ml-12 space-y-16">
             {[
-              { year: "2010", title: "La Fondation", desc: "Ouverture de notre premier atelier de confection à Istanbul. Les premières créations Alvina voient le jour." },
-              { year: "2015", title: "L'Apogée Nationale", desc: "ALVINA devient l'une des marques phares de la mode modeste en Turquie, reconnue dans toute l'industrie textile." },
-              { year: "2019", title: "Expansion Internationale", desc: "Les boutiques Alvina s'ouvrent sur les marchés du Moyen-Orient, d'Europe et d'Afrique du Nord." },
-              { year: "2020", title: "L'Ère Numérique", desc: "Lancement d'alvinaonline.com — notre catalogue complet accessible aux femmes du monde entier." },
-              { year: "2025", title: "Collection SS2025", desc: "L'ultime collection : la consécration du design contemporain fusionné avec l'héritage artisanal turc." },
+              { year: "2010", title: t.aboutEvo1, desc: t.aboutEvo1Desc },
+              { year: "2015", title: t.aboutEvo2, desc: t.aboutEvo2Desc },
+              { year: "2019", title: t.aboutEvo3, desc: t.aboutEvo3Desc },
+              { year: "2020", title: t.aboutEvo4, desc: t.aboutEvo4Desc },
+              { year: "2025", title: t.aboutEvo5, desc: t.aboutEvo5Desc },
             ].map((item) => (
               <div key={item.year} className="timeline-item relative">
                 <div className="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-gold" />

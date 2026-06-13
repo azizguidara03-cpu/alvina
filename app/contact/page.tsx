@@ -5,26 +5,31 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useTranslation } from "@/lib/translations";
 
-const schema = z.object({
-  nom: z.string().min(2, { message: "Le nom doit contenir au moins 2 caractères." }),
-  email: z.string().email({ message: "Adresse e-mail invalide." }),
-  objet: z.string().min(1, { message: "Veuillez sélectionner un objet." }),
-  message: z.string().min(10, { message: "Le message doit contenir au moins 10 caractères." }),
-});
 
-type FormValues = z.infer<typeof schema>;
-
-const contactDetails = [
-  { icon: Phone, label: "Téléphone", value: "0850 222 30 80" },
-  { icon: Mail, label: "E-mail", value: "contact@alvinaonline.com" },
-  { icon: MapPin, label: "Adresse", value: "Istanbul, Turquie" },
-  { icon: Clock, label: "Horaires", value: "Lun–Ven · 09h–18h" },
-];
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const { t } = useTranslation();
+
+  const contactDetails = [
+    { icon: Phone, label: t.contactPhoneLabel, value: "0850 222 30 80" },
+    { icon: Mail,  label: "E-mail",             value: "contact@alvinaonline.com" },
+    { icon: MapPin,label: t.contactAddressLabel, value: "Istanbul, Turquie" },
+    { icon: Clock, label: t.contactHoursLabel,   value: "Lun–Ven · 09h–18h" },
+  ];
+
+
+  const schema = z.object({
+    nom: z.string().min(2, { message: t.contactNameMin }),
+    email: z.string().email({ message: t.contactEmailInvalid }),
+    objet: z.string().min(1, { message: t.contactSubjectRequired }),
+    message: z.string().min(10, { message: t.contactMessageMin }),
+  });
+
+  type FormValues = z.infer<typeof schema>;
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(schema),
@@ -50,10 +55,10 @@ export default function ContactPage() {
         transition={{ duration: 0.7 }}
       >
         <span className="text-gold tracking-[0.3em] uppercase text-xs font-sans mb-4 block">
-          Service Client
+          {t.contactService}
         </span>
         <h1 className="font-serif text-4xl md:text-6xl uppercase tracking-widest mb-6">
-          Contactez Nous
+          {t.contactTitle}
         </h1>
         <div className="h-px bg-gold w-16 mx-auto" />
       </motion.div>
@@ -67,8 +72,7 @@ export default function ContactPage() {
           transition={{ duration: 0.7, delay: 0.2 }}
         >
           <p className="text-[var(--text-secondary)] mb-12 leading-relaxed max-w-md text-sm md:text-base">
-            Pour toute demande concernant nos collections, vos commandes, ou un rendez-vous sur mesure,
-            notre équipe est à votre disposition en semaine de 09h00 à 18h00.
+            {t.contactIntro}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -91,7 +95,7 @@ export default function ContactPage() {
           {/* Social links */}
           <div className="mt-12 pt-8 border-t border-[var(--border-color)]">
             <p className="text-xs tracking-[0.2em] uppercase text-[var(--text-secondary)] mb-4">
-              Suivez-nous
+              {t.contactFollow}
             </p>
             <div className="flex gap-6">
               {[
@@ -133,10 +137,10 @@ export default function ContactPage() {
                   <Check size={32} />
                 </div>
                 <h2 className="font-serif text-2xl tracking-widest uppercase mb-2 text-[var(--text-primary)]">
-                  Message Envoyé
+                  {t.contactSent}
                 </h2>
                 <p className="text-[var(--text-secondary)]">
-                  Nous vous répondrons dans les plus brefs délais.
+                  {t.contactSentSub}
                 </p>
               </motion.div>
             )}
@@ -147,7 +151,7 @@ export default function ContactPage() {
               <div className="flex flex-col">
                 {/* BUG #1 FIX: labels use adaptive text-[var(--text-secondary)] */}
                 <label className="text-xs uppercase tracking-[0.15em] text-[var(--text-secondary)] mb-2">
-                  Nom Complet
+                  {t.contactName}
                 </label>
                 <input
                   {...register("nom")}
@@ -157,7 +161,7 @@ export default function ContactPage() {
               </div>
               <div className="flex flex-col">
                 <label className="text-xs uppercase tracking-[0.15em] text-[var(--text-secondary)] mb-2">
-                  Adresse E-mail
+                  {t.contactEmail}
                 </label>
                 <input
                   {...register("email")}
@@ -170,24 +174,24 @@ export default function ContactPage() {
 
             <div className="flex flex-col">
               <label className="text-xs uppercase tracking-[0.15em] text-[var(--text-secondary)] mb-2">
-                Sujet
+                {t.contactSubject}
               </label>
               <select
                 {...register("objet")}
                 className="bg-[var(--bg-card)] text-[var(--text-primary)] border-b border-[var(--border-color)] py-3 focus:outline-none focus:border-gold transition-colors appearance-none"
               >
-                <option value="" disabled>-- Sélectionner --</option>
-                <option value="commande">Suivi de commande</option>
-                <option value="retour">Retours &amp; Échanges</option>
-                <option value="presse">Presse &amp; Influenceurs</option>
-                <option value="autre">Autre question</option>
+                <option value="" disabled>-- {t.contactSubject} --</option>
+                <option value="commande">{t.contactOptOrder}</option>
+                <option value="retour">{t.contactOptReturn}</option>
+                <option value="presse">{t.contactOptPress}</option>
+                <option value="autre">{t.contactOptOther}</option>
               </select>
               {errors.objet && <span className="text-red-500 text-xs mt-1">{errors.objet.message}</span>}
             </div>
 
             <div className="flex flex-col">
               <label className="text-xs uppercase tracking-[0.15em] text-[var(--text-secondary)] mb-2">
-                Message
+                {t.contactMessage}
               </label>
               <textarea
                 {...register("message")}
@@ -203,7 +207,7 @@ export default function ContactPage() {
               // BUG #1 FIX: uses adaptive tokens — proper in both modes
               className="bg-[var(--bg-inverse)] text-[var(--text-inverse)] hover:bg-gold hover:text-white py-4 tracking-[0.2em] uppercase text-sm transition-colors disabled:opacity-50 w-full"
             >
-              {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
+              {isSubmitting ? t.contactSending : t.contactSend}
             </button>
           </form>
         </motion.div>

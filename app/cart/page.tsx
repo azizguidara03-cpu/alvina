@@ -7,8 +7,11 @@ import { Minus, Plus, Trash2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+import { useTranslation } from "@/lib/translations";
+
 export default function CartPage() {
   const { items, updateQuantity, removeItem } = useCartStore();
+  const { t } = useTranslation();
   const { convertPrice, currency } = useLocaleStore();
   const [mounted, setMounted] = useState(false);
   const [coupon, setCoupon] = useState("");
@@ -29,25 +32,25 @@ export default function CartPage() {
     e.preventDefault();
     if (coupon.toUpperCase() === "ALVINA10") {
       setDiscount(0.10);
-      setToastMessage("Code appliqué avec succès !");
+      setToastMessage(t.cartCouponSuccess);
     } else {
-      setToastMessage("Code invalide");
+      setToastMessage(t.cartCouponInvalid);
     }
     setTimeout(() => setToastMessage(""), 3000);
   };
 
   const handleCheckout = () => {
-    setToastMessage("Fonctionnalité bientôt disponible");
+    setToastMessage(t.cartComingSoon);
     setTimeout(() => setToastMessage(""), 3000);
   };
 
   if (items.length === 0) {
     return (
       <main className="min-h-screen pt-40 pb-24 px-6 flex flex-col items-center justify-center text-center">
-        <h1 className="font-serif text-4xl tracking-widest uppercase mb-6">Panier</h1>
-        <p className="text-warm-gray mb-8">Votre panier est actuellement vide.</p>
+        <h1 className="font-serif text-4xl tracking-widest uppercase mb-6">{t.cartTitle}</h1>
+        <p className="text-warm-gray mb-8">{t.cartEmpty}</p>
         <Link href="/shop" className="bg-charcoal text-white dark:bg-white dark:text-charcoal px-8 py-4 uppercase tracking-widest text-sm hover:bg-gold dark:hover:bg-gold hover:text-white transition-colors">
-          Retour à la boutique
+          {t.cartReturnShop}
         </Link>
       </main>
     );
@@ -55,15 +58,15 @@ export default function CartPage() {
 
   return (
     <main className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
-      <h1 className="font-serif text-4xl md:text-5xl tracking-widest uppercase mb-12 text-center">Mon Panier</h1>
+      <h1 className="font-serif text-4xl md:text-5xl tracking-widest uppercase mb-12 text-center">{t.cartMyCart}</h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
           <div className="hidden border-b border-charcoal/20 dark:border-white/20 pb-4 mb-6 md:grid grid-cols-12 gap-4 uppercase tracking-[0.2em] text-xs font-medium">
-            <span className="col-span-6">Produit</span>
-            <span className="col-span-2 text-center">Prix</span>
-            <span className="col-span-2 text-center">Quantité</span>
-            <span className="col-span-2 text-right">Total</span>
+            <span className="col-span-6">{t.cartProduct}</span>
+            <span className="col-span-2 text-center">{t.cartPrice}</span>
+            <span className="col-span-2 text-center">{t.cartQuantity}</span>
+            <span className="col-span-2 text-right">{t.cartTotal}</span>
           </div>
 
           <div className="flex flex-col gap-6">
@@ -82,8 +85,8 @@ export default function CartPage() {
                    </div>
                    <div className="flex flex-col justify-center">
                      <Link href={`/shop/${item.product.slug}`} className="font-serif text-lg mb-1 hover:text-gold transition-colors">{item.product.name}</Link>
-                     <span className="text-sm text-warm-gray mb-1">Couleur : {item.selectedColor.name}</span>
-                     <span className="text-sm text-warm-gray">Taille : {item.selectedSize}</span>
+                     <span className="text-sm text-warm-gray mb-1">{t.productColor} : {item.selectedColor.name}</span>
+                     <span className="text-sm text-warm-gray">{t.productSize} : {item.selectedSize}</span>
                    </div>
                  </div>
 
@@ -118,7 +121,7 @@ export default function CartPage() {
 
           <div className="mt-8 flex justify-between items-center">
             <Link href="/shop" className="text-sm tracking-widest uppercase border-b border-charcoal dark:border-white hover:text-gold hover:border-gold transition-colors pb-1">
-              Continuer mes achats
+              {t.cartContinue}
             </Link>
           </div>
         </div>
@@ -140,27 +143,27 @@ export default function CartPage() {
               )}
             </AnimatePresence>
 
-            <h2 className="font-serif text-2xl tracking-widest uppercase mb-8 border-b border-charcoal/10 dark:border-white/10 pb-4">Résumé</h2>
+            <h2 className="font-serif text-2xl tracking-widest uppercase mb-8 border-b border-charcoal/10 dark:border-white/10 pb-4">{t.cartSummary}</h2>
             
             <div className="flex flex-col gap-4 mb-8 text-sm">
               <div className="flex justify-between">
-                <span className="text-warm-gray tracking-wide">Sous-total</span>
+                <span className="text-warm-gray tracking-wide">{t.cartSubtotal}</span>
                 <span>{convertPrice(subtotal)}</span>
               </div>
               
               {discount > 0 && (
                  <div className="flex justify-between text-gold">
-                    <span className="tracking-wide">Remise (10%)</span>
+                    <span className="tracking-wide">{t.cartDiscount} (10%)</span>
                     <span>-{convertPrice(subtotal * discount)}</span>
                  </div>
               )}
 
               <div className="flex justify-between">
-                <span className="text-warm-gray tracking-wide">Livraison</span>
-                <span>{shipping === 0 ? "Gratuite" : convertPrice(shipping)}</span>
+                <span className="text-warm-gray tracking-wide">{t.cartShipping}</span>
+                <span>{shipping === 0 ? t.cartFree : convertPrice(shipping)}</span>
               </div>
               <div className="border-t border-charcoal/10 dark:border-white/10 pt-4 flex justify-between font-serif text-2xl mt-2">
-                <span>Total</span>
+                <span>{t.cartTotal}</span>
                 <span>{convertPrice(total)}</span>
               </div>
             </div>
@@ -168,13 +171,13 @@ export default function CartPage() {
             <form onSubmit={handleApplyCoupon} className="mb-8 flex gap-2">
                <input 
                   type="text" 
-                  placeholder="Code promo (ex: ALVINA10)" 
+                  placeholder={t.cartPromo} 
                   value={coupon}
                   onChange={(e) => setCoupon(e.target.value)}
                   className="w-full bg-transparent border border-charcoal/30 dark:border-white/30 px-4 py-2 focus:outline-none focus:border-gold dark:focus:border-gold text-sm uppercase"
                />
                <button type="submit" className="bg-charcoal text-white dark:bg-white dark:text-charcoal px-4 text-xs tracking-widest uppercase hover:bg-gold hover:text-white dark:hover:bg-gold transition-colors">
-                 Appliquer
+                 {t.cartApply}
                </button>
             </form>
 
@@ -182,7 +185,7 @@ export default function CartPage() {
               onClick={handleCheckout}
               className="w-full bg-gold hover:bg-gold-dark text-white py-4 uppercase tracking-[0.2em] text-sm font-medium transition-colors"
             >
-              Commander
+              {t.cartCheckout}
             </button>
           </div>
         </div>

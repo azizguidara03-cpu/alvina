@@ -10,15 +10,15 @@ const socials = [
 ];
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, tp } = useTranslation();
 
   const footerLinks = {
     collections: [
-      { label: "Robe de Soirée", href: "/shop?category=Robe%20de%20Soirée" },
-      { label: "Chemisier", href: "/shop?category=Chemisier" },
-      { label: "Abaya", href: "/shop?category=Abaya" },
-      { label: "Veste", href: "/shop?category=Veste" },
-      { label: "Jean", href: "/shop?category=Jean" },
+      { label: tp("Robe de Soirée"), href: "/shop?category=Robe%20de%20Soirée" },
+      { label: tp("Chemisier"), href: "/shop?category=Chemisier" },
+      { label: tp("Abaya"), href: "/shop?category=Abaya" },
+      { label: tp("Veste"), href: "/shop?category=Veste" },
+      { label: tp("Jean"), href: "/shop?category=Jean" },
     ],
     info: [
       { label: t.navAbout, href: "/about" },

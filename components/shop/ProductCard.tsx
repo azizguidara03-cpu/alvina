@@ -43,7 +43,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <Link
         href={`/shop/${product.slug}`}
         className="group block"
-        onMouseEnter={() => setCursorText("Voir")}
+        onMouseEnter={() => setCursorText(t.viewHover)}
         onMouseLeave={() => setCursorText("")}
       >
         <div className="relative aspect-[3/4] mb-4 overflow-hidden bg-champagne">
@@ -93,7 +93,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <div className="flex flex-col items-center text-center px-2">
           <span className="text-[10px] text-[var(--text-secondary)] tracking-[0.2em] uppercase mb-1.5">
-            {product.category}
+            {tp(product.category)}
           </span>
           <h3 className="font-serif text-base md:text-lg mb-2 group-hover:text-gold transition-colors duration-300 leading-snug text-[var(--text-primary)]">
             {tp(product.name)}
