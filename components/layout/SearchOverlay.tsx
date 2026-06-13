@@ -33,7 +33,7 @@ interface SearchOverlayProps {
 export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const { convertPrice } = useLocaleStore();
+  const { convertPrice, currency } = useLocaleStore();
   const { t, tp, isRTL } = useTranslation();
 
   const popularTerms = t.searchPopularTerms.split(",");

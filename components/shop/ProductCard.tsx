@@ -12,7 +12,7 @@ import { useTranslation } from "@/lib/translations";
 export default function ProductCard({ product }: { product: Product }) {
   const addItem = useCartStore((state) => state.addItem);
   const setCursorText = useUiStore((state) => state.setCursorText);
-  const { convertPrice } = useLocaleStore();
+  const { convertPrice, currency } = useLocaleStore();
   const { t, tp } = useTranslation();
   const [mainImage, setMainImage] = useState(product.images[0] || "");
   const [hoverImage, setHoverImage] = useState(product.images[1] || product.images[0] || "");

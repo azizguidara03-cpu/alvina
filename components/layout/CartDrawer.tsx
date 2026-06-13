@@ -4,11 +4,12 @@ import { X, Trash2, Plus, Minus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCartStore } from "@/store/cartStore";
-import { formatPrice } from "@/lib/utils";
+import { useLocaleStore } from "@/store/localeStore";
 import { useState, useEffect } from "react";
 
 export default function CartDrawer() {
   const { items, isOpen, toggleDrawer, updateQuantity, removeItem } = useCartStore();
+  const { convertPrice, currency } = useLocaleStore();
   const [mounted, setMounted] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const fallbackImage =
@@ -140,7 +141,7 @@ export default function CartDrawer() {
                             </button>
                           </div>
                           <span className="font-medium text-[var(--text-primary)]">
-                            {formatPrice(item.product.price * item.quantity)}
+                            {convertPrice(item.product.price * item.quantity)}
                           </span>
                         </div>
                       </div>
@@ -168,10 +169,10 @@ export default function CartDrawer() {
 
                 <div className="flex justify-between items-center mb-6 font-serif text-xl">
                   <span>Sous-total</span>
-                  <span>{formatPrice(subtotal)}</span>
+                  <span>{convertPrice(subtotal)}</span>
                 </div>
                 <p className="text-xs text-[var(--text-secondary)] mb-4 text-center">
-                  Livraison gratuite dès 300 €
+                  Livraison gratuite dès {convertPrice(300)}
                 </p>
                 <div className="flex flex-col gap-3">
                   <Link

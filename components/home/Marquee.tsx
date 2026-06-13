@@ -1,9 +1,9 @@
 "use client";
 
 const items = [
-  "ALVINA", "·", "HAUTE COUTURE", "·", "ISTANBUL", "·", "SS 2025",
-  "·", "TESETTÜR", "·", "MODEST LUXURY", "·", "ALVINA", "·",
-  "HAUTE COUTURE", "·", "ISTANBUL", "·", "SS 2025", "·", "TESETTÜR", "·",
+  "ALVINA", "·", "HAUTE COUTURE", "·", "TUNISIA", "·", "SS2026",
+  "·", "SFAX", "·", "MODEST LUXURY", "·", "ALVINA", "·",
+  "HAUTE COUTURE", "·", "TUNISIA", "·", "SS2026", "·", "SFAX", "·",
 ];
 
 export default function Marquee() {

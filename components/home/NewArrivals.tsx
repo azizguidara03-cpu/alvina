@@ -21,7 +21,7 @@ const itemVariants = {
 
 export default function NewArrivals() {
   const { t, tp } = useTranslation();
-  const { convertPrice } = useLocaleStore();
+  const { convertPrice, currency } = useLocaleStore();
   const [brokenImages, setBrokenImages] = useState<Record<string, boolean>>({});
 
   if (newArrivals.length === 0) return null;
@@ -40,7 +40,7 @@ export default function NewArrivals() {
         >
           <div>
             <span className="text-gold tracking-[0.25em] text-xs uppercase font-medium mb-3 block">
-              {t.categoryNew} · SS2025
+              {t.categoryNew} · SS2026
             </span>
             <h2 className="font-serif text-4xl md:text-5xl tracking-widest uppercase mb-4">
               {t.newArrivalsTitle}

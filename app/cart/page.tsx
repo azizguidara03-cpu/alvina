@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { formatPrice } from "@/lib/utils";
+import { useLocaleStore } from "@/store/localeStore";
 import { useCartStore } from "@/store/cartStore";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export default function CartPage() {
   const { items, updateQuantity, removeItem } = useCartStore();
+  const { convertPrice, currency } = useLocaleStore();
   const [mounted, setMounted] = useState(false);
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
@@ -87,7 +88,7 @@ export default function CartPage() {
                  </div>
 
                  <div className="md:col-span-2 hidden md:block text-center">
-                    {formatPrice(item.product.price)}
+                    {convertPrice(item.product.price)}
                  </div>
 
                  <div className="md:col-span-2 flex justify-start md:justify-center">
@@ -109,7 +110,7 @@ export default function CartPage() {
                  </div>
 
                  <div className="md:col-span-2 text-right font-medium text-lg md:text-base mt-2 md:mt-0">
-                    {formatPrice(item.product.price * item.quantity)}
+                    {convertPrice(item.product.price * item.quantity)}
                  </div>
               </div>
             ))}
@@ -144,23 +145,23 @@ export default function CartPage() {
             <div className="flex flex-col gap-4 mb-8 text-sm">
               <div className="flex justify-between">
                 <span className="text-warm-gray tracking-wide">Sous-total</span>
-                <span>{formatPrice(subtotal)}</span>
+                <span>{convertPrice(subtotal)}</span>
               </div>
               
               {discount > 0 && (
                  <div className="flex justify-between text-gold">
                     <span className="tracking-wide">Remise (10%)</span>
-                    <span>-{formatPrice(subtotal * discount)}</span>
+                    <span>-{convertPrice(subtotal * discount)}</span>
                  </div>
               )}
 
               <div className="flex justify-between">
                 <span className="text-warm-gray tracking-wide">Livraison</span>
-                <span>{shipping === 0 ? "Gratuite" : formatPrice(shipping)}</span>
+                <span>{shipping === 0 ? "Gratuite" : convertPrice(shipping)}</span>
               </div>
               <div className="border-t border-charcoal/10 dark:border-white/10 pt-4 flex justify-between font-serif text-2xl mt-2">
                 <span>Total</span>
-                <span>{formatPrice(total)}</span>
+                <span>{convertPrice(total)}</span>
               </div>
             </div>
 

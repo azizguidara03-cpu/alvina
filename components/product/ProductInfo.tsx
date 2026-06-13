@@ -13,7 +13,7 @@ export default function ProductInfo({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const addItem = useCartStore(state => state.addItem);
-  const { convertPrice } = useLocaleStore();
+  const { convertPrice, currency } = useLocaleStore();
   const { t, tp, language } = useTranslation();
 
   useEffect(() => {

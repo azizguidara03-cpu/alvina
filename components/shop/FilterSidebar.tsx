@@ -21,7 +21,7 @@ export default function FilterSidebar({
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [isSlidingPrice, setIsSlidingPrice] = useState(false);
   const { t } = useTranslation();
-  const { convertPrice } = useLocaleStore();
+  const { convertPrice, currency } = useLocaleStore();
 
   const categories = [
     { label: t.filterAll, value: "all" },
