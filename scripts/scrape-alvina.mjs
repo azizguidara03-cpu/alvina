@@ -54,7 +54,11 @@ const run = async () => {
           name = name.replace("ALVINA ", "").replace(" | ALVİNA", "").trim();
 
           const imageMatch = productHtml.match(/<meta property="og:image" content="([^"]+)"/i);
-          const image = imageMatch ? imageMatch[1] : (productObj?.image || '');
+          let image = imageMatch ? imageMatch[1] : (productObj?.image || '');
+          if (image) {
+              image = image.replace(/_([2-9])_enbuyuk\.jpg/g, "_1_enbuyuk.jpg");
+              image = image.replace(/_([2-9])_659x985\.jpg/g, "_1_659x985.jpg");
+          }
           
           if (!image) continue; 
 
