@@ -92,7 +92,7 @@ export default function AboutPage() {
         <div className="reveal-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[3/4] md:aspect-square overflow-hidden bg-champagne">
             <Image
-              src="https://cdn.alvinaonline.com/ContentImages/Product/2026-kis/26KMNT0090605-001/90605-molly-manto-40-48-tek42_26kmnt0090605-001_siyah-siyah_4_659x985.jpg"
+              src="\0a1c8049ea123fef6ebc69ba2a20b878.jpg"
               alt="Histoire Alvina"
               fill
               unoptimized
@@ -135,7 +135,7 @@ export default function AboutPage() {
           </div>
           <div className="order-1 md:order-2 relative aspect-[3/4] md:aspect-square overflow-hidden bg-champagne">
             <Image
-              src="https://cdn.alvinaonline.com/ContentImages/Product/2026-kis/26KTNK0045845-Z452/45845-triko-tunik-38-46_26ktnk0045845-z452_mocha-kahve_1_659x985.jpg"
+              src="\321261b58b71cb6fbb5eeb75825e40d7.jpg"
               alt="Vision Alvina"
               fill
               unoptimized

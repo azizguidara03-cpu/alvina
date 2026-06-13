@@ -47,8 +47,9 @@ export default function HeroSection() {
   const imageRef = useRef<HTMLDivElement>(null);
   const heroImages = [
     "https://cdn.alvinaonline.com/ContentImages/Banner/4976E20BE1F944179A3DB7B5926C5104.jpg",
-    "https://cdn.alvinaonline.com/ContentImages/Product/2026-kis/26KMNT0090605-020/90605-molly-manto-40-48-tek42_26kmnt0090605-020_a-bej-bej_4_enbuyuk.jpg",
-    "https://cdn.alvinaonline.com/ContentImages/Product/2026-kis/26KTRC0010986-020/10986-edna-suet-trenckot-38-46-tek-42_26ktrc0010986-020_a-bej-bej_1_enbuyuk.jpg",
+    "https://cdn.alvinaonline.com/ContentImages/Banner/15C66342435341CC8DAD64C991FE5838.jpg",
+    "https://cdn.alvinaonline.com/ContentImages/Banner/577DD82755684DCAA4B2327D657EFB78.jpg",
+    "https://cdn.alvinaonline.com/ContentImages/Banner/2DCF0DD4A42B4581ADF856A4B223BCAD.jpg",
   ];
   const heroImagePositions = [
     "center 22%", // slide 1 (jaune)
@@ -118,7 +119,7 @@ export default function HeroSection() {
           >
             <Image
               src={heroImages[heroIndex]}
-              alt="Alvina Haute Couture — Collection SS 2025"
+              alt="Alvina Haute Couture — Collection SS 2026"
               fill
               className="object-cover"
               style={{ objectPosition: heroImagePositions[heroIndex] || "center 20%" }}

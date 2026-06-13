@@ -15,9 +15,9 @@ export default function ContactPage() {
   const { t } = useTranslation();
 
   const contactDetails = [
-    { icon: Phone, label: t.contactPhoneLabel, value: "0850 222 30 80" },
-    { icon: Mail,  label: "E-mail",             value: "contact@alvinaonline.com" },
-    { icon: MapPin,label: t.contactAddressLabel, value: "Istanbul, Turquie" },
+    { icon: Phone, label: t.contactPhoneLabel, value: "+9053652032660" },
+    { icon: Mail,  label: "E-mail",             value: "Alvina.sfax@gmail.com" },
+    { icon: MapPin,label: t.contactAddressLabel, value: "Sfax, Tunisie" },
     { icon: Clock, label: t.contactHoursLabel,   value: "Lun–Ven · 09h–18h" },
   ];
 
@@ -99,9 +99,8 @@ export default function ContactPage() {
             </p>
             <div className="flex gap-6">
               {[
-                { label: "Instagram", href: "https://www.instagram.com/alvinaonline/" },
-                { label: "Facebook", href: "https://www.facebook.com/alvinaonline/" },
-                { label: "Pinterest", href: "https://www.pinterest.com/alvinaofficial/" },
+                { label: "Instagram", href: "https://www.instagram.com/alvina.sfax?igsh=MWkzZmtzZGwwM252dQ==" },
+                { label: "Facebook", href: "https://www.facebook.com/Alvina.Sfax" }
               ].map((s) => (
                 <a
                   key={s.label}
