@@ -1,6 +1,8 @@
 export interface ProductColor {
   name: string;
   hex: string;
+  slug: string;
+  images: string[];
 }
 
 export interface Product {

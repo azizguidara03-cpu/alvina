@@ -161,7 +161,7 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
                           <div className="relative aspect-[3/4] overflow-hidden bg-champagne">
                             {product.images?.[0] && (
                               <Image
-                                src={product.images[0]}
+                                src={product.colors[0]?.images?.[0] || product.images[0]}
                                 alt={product.name}
                                 fill
                                 unoptimized

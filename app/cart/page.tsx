@@ -78,7 +78,7 @@ export default function CartPage() {
                  
                  <div className="md:col-span-5 flex gap-4 pr-8 md:pr-0">
                    <div className="relative w-20 h-28 md:w-24 md:h-32 bg-gray-100 dark:bg-gray-800 flex-shrink-0">
-                     <Image src={item.product.images[0]} alt={item.product.name} fill className="object-cover" />
+                     <Image src={item.selectedColor.images?.[0] || item.product.images[0]} alt={item.product.name} fill className="object-cover" />
                    </div>
                    <div className="flex flex-col justify-center">
                      <Link href={`/shop/${item.product.slug}`} className="font-serif text-lg mb-1 hover:text-gold transition-colors">{item.product.name}</Link>

@@ -89,7 +89,7 @@ export default function CartDrawer() {
                     >
                       <div className="relative w-24 h-32 flex-shrink-0 bg-[var(--bg-secondary)]">
                         <Image
-                          src={brokenImages[item.id] ? fallbackImage : item.product.images[0]}
+                          src={brokenImages[item.id] ? fallbackImage : (item.selectedColor.images?.[0] || item.product.images[0])}
                           alt={item.product.name}
                           fill
                           unoptimized

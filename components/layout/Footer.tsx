@@ -14,10 +14,11 @@ export default function Footer() {
 
   const footerLinks = {
     collections: [
-      { label: t.catDresses, href: "/shop?category=robes" },
-      { label: t.catCoats, href: "/shop?category=veste" },
-      { label: t.catSets, href: "/shop?category=pantalon" },
-      { label: t.catAbaya, href: "/shop?category=abaya" },
+      { label: "Robe de Soirée", href: "/shop?category=Robe%20de%20Soirée" },
+      { label: "Chemisier", href: "/shop?category=Chemisier" },
+      { label: "Abaya", href: "/shop?category=Abaya" },
+      { label: "Veste", href: "/shop?category=Veste" },
+      { label: "Jean", href: "/shop?category=Jean" },
     ],
     info: [
       { label: t.navAbout, href: "/about" },

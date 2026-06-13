@@ -1,12 +1,12 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
 import { useTranslation } from "@/lib/translations";
+import { products } from "@/data/products";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -27,24 +27,28 @@ export default function FeaturedCollections() {
   const { t } = useTranslation();
   const titleRef = useRef<HTMLHeadingElement>(null);
 
+  const robesProduct = products.find(p => p.category === "Robe de Soirée" || p.category === "Robe");
+  const abayaProduct = products.find(p => p.category === "Abaya");
+  const chemisierProduct = products.find(p => p.category === "Chemisier");
+
   const collections = [
     {
-      title: t.catDresses,
-      subtitle: t.coll1Sub,
-      image: "https://cdn.alvinaonline.com/ContentImages/Product/2026-kis/26KELB0045823-001/45823-2-li-triko-elbise-38-46_26kelb0045823-001_siyah-siyah_1_659x985.jpg",
-      slug: "robes",
+      title: "Robe de Soirée",
+      subtitle: "Collection Été",
+      image: robesProduct?.colors[0]?.images?.[0] || robesProduct?.images?.[0] || "",
+      slug: "robe-de-soirée",
     },
     {
-      title: t.catCoats,
-      subtitle: t.coll2Sub,
-      image: "https://cdn.alvinaonline.com/ContentImages/Product/2026-kis/26KKBN0090603-036/90603-winter-almeda-kaban-38-46-tek42_26kkbn0090603-036_gumus-gumus_3_659x985.jpg",
-      slug: "veste",
+      title: "Abaya",
+      subtitle: "Collection Été",
+      image: abayaProduct?.colors[0]?.images?.[0] || abayaProduct?.images?.[0] || "",
+      slug: "abaya",
     },
     {
-      title: t.catSets,
-      subtitle: t.coll3Sub,
-      image: "https://cdn.alvinaonline.com/ContentImages/Product/2026-kis/26KTKP0046020-045/46020-17235-2li-pant-tk-38-42-tek38-cift40_26ktkp0046020-045_kahve-kahve_1_659x985.jpg",
-      slug: "pantalon",
+      title: "Chemisier",
+      subtitle: "Collection Été",
+      image: chemisierProduct?.colors[0]?.images?.[0] || chemisierProduct?.images?.[0] || "",
+      slug: "chemisier",
     },
   ];
 

@@ -75,7 +75,7 @@ export default function LookbookSection() {
           >
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500 z-10" />
             <Image
-              src={mainProduct.images[0]}
+              src={mainProduct.colors[0]?.images?.[0] || mainProduct.images[0]}
               alt={mainProduct.name}
               fill
               unoptimized
@@ -105,7 +105,7 @@ export default function LookbookSection() {
               >
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/0 transition-colors duration-500 z-10" />
                 <Image
-                  src={product.images[0]}
+                  src={product.colors[0]?.images?.[0] || product.images[0]}
                   alt={product.name}
                   fill
                   unoptimized

@@ -6,10 +6,14 @@ import { useCartStore } from "@/store/cartStore";
 import { useLocaleStore } from "@/store/localeStore";
 import { Minus, Plus, Heart } from "lucide-react";
 import { useTranslation } from "@/lib/translations";
+import { useRouter } from "next/navigation";
 
-export default function ProductInfo({ product }: { product: Product }) {
+export default function ProductInfo({ product, initialColorSlug }: { product: Product, initialColorSlug?: string }) {
+  const router = useRouter();
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [selectedColor, setSelectedColor] = useState(
+    product.colors.find(c => c.slug === initialColorSlug) || product.colors[0]
+  );
   const [quantity, setQuantity] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const addItem = useCartStore(state => state.addItem);
@@ -74,7 +78,10 @@ export default function ProductInfo({ product }: { product: Product }) {
           {product.colors.map(color => (
             <button
               key={color.name}
-              onClick={() => setSelectedColor(color)}
+              onClick={() => {
+                setSelectedColor(color);
+                router.push(`/shop/${color.slug}`);
+              }}
               className={cn(
                 "w-8 h-8 rounded-full border-2 transition-all duration-300",
                 selectedColor.name === color.name ? "border-gold scale-110" : "border-transparent"

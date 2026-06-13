@@ -25,11 +25,7 @@ export default function FilterSidebar({
 
   const categories = [
     { label: t.filterAll, value: "all" },
-    { label: t.catDresses, value: "robes" },
-    { label: t.catSets, value: "pantalon" },
-    { label: t.catCoats, value: "veste" },
-    { label: t.catAbaya, value: "abaya" },
-    { label: t.catAccessories, value: "accessoires" },
+    ...availableCategories.map(cat => ({ label: cat, value: cat }))
   ];
 
   const currentSort = searchParams.get("sort") || "newest";
@@ -40,13 +36,7 @@ export default function FilterSidebar({
     setSliderPrice(currentMaxPrice);
   }, [currentMaxPrice]);
 
-  const visibleCategories = useMemo(
-    () =>
-      categories.filter(
-        (cat) => cat.value === "all" || availableCategories.includes(cat.value)
-      ),
-    [availableCategories]
-  );
+  const visibleCategories = categories;
 
   const updateFilters = (category: string) => {
     const params = new URLSearchParams(searchParams.toString());

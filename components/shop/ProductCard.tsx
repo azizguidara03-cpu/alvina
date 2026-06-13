@@ -14,9 +14,10 @@ export default function ProductCard({ product }: { product: Product }) {
   const setCursorText = useUiStore((state) => state.setCursorText);
   const { convertPrice, currency } = useLocaleStore();
   const { t, tp } = useTranslation();
-  const [mainImage, setMainImage] = useState(product.images[0] || "");
-  const [hoverImage, setHoverImage] = useState(product.images[1] || product.images[0] || "");
-  const [isImageInvalid, setIsImageInvalid] = useState(!product.images[0]);
+  const colorImages = product.colors?.[0]?.images || product.images || [];
+  const [mainImage, setMainImage] = useState(colorImages[0] || "");
+  const [hoverImage, setHoverImage] = useState(colorImages[1] || colorImages[0] || "");
+  const [isImageInvalid, setIsImageInvalid] = useState(!colorImages[0]);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -54,7 +55,7 @@ export default function ProductCard({ product }: { product: Product }) {
             className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:-translate-y-1"
             onError={() => setIsImageInvalid(true)}
           />
-          {product.images[1] && (
+          {colorImages[1] && (
             <Image
               src={hoverImage}
               alt={`${product.name} — vue 2`}
@@ -92,15 +93,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <div className="flex flex-col items-center text-center px-2">
           <span className="text-[10px] text-[var(--text-secondary)] tracking-[0.2em] uppercase mb-1.5">
-            {product.category === "veste"
-              ? t.catCoats
-              : product.category === "robes"
-              ? t.catDresses
-              : product.category === "pantalon"
-              ? t.catSets
-              : product.category === "abaya"
-              ? t.catAbaya
-              : t.catAccessories}
+            {product.category}
           </span>
           <h3 className="font-serif text-base md:text-lg mb-2 group-hover:text-gold transition-colors duration-300 leading-snug text-[var(--text-primary)]">
             {tp(product.name)}
