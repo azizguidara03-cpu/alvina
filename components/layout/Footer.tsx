@@ -42,6 +42,41 @@ export default function Footer() {
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.8 }}
     >
+      {/* ── PARTNERSHIPS & ADVERTISING ──────────────────────────────────────── */}
+      <div className="max-w-7xl mx-auto mb-16 pb-10 border-b border-[#FAF7F2]/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span className="text-gold tracking-[0.25em] text-xs uppercase font-sans mb-3 block">
+              {t.footerPartnerLabel}
+            </span>
+            <h3 className="font-serif text-xl md:text-2xl tracking-widest text-[#FAF7F2] mb-3">
+              {t.footerPartnerTitle}
+            </h3>
+            <p className="text-[#8C8279] text-sm leading-relaxed max-w-md">
+              {t.footerPartnerBody}
+            </p>
+          </div>
+          <div className="flex flex-col gap-4 md:items-end">
+            <div className="flex flex-wrap gap-3">
+              {adTypes.map((label) => (
+                <span
+                  key={label}
+                  className="text-xs tracking-widest text-[#8C8279] border border-[#FAF7F2]/10 px-3 py-1.5"
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 mt-2 text-xs tracking-[0.2em] uppercase text-gold border border-gold/40 px-5 py-2.5 hover:bg-gold hover:text-white transition-colors duration-300"
+            >
+              {t.footerPartnerCta}
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
         {/* Brand */}
         <div className="md:col-span-4">
@@ -133,43 +168,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── PARTNERSHIPS & ADVERTISING ──────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto mt-16 pt-10 border-t border-[#FAF7F2]/10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <span className="text-gold tracking-[0.25em] text-xs uppercase font-sans mb-3 block">
-              {t.footerPartnerLabel}
-            </span>
-            <h3 className="font-serif text-xl md:text-2xl tracking-widest text-[#FAF7F2] mb-3">
-              {t.footerPartnerTitle}
-            </h3>
-            <p className="text-[#8C8279] text-sm leading-relaxed max-w-md">
-              {t.footerPartnerBody}
-            </p>
-          </div>
-          <div className="flex flex-col gap-4 md:items-end">
-            <div className="flex flex-wrap gap-3">
-              {adTypes.map((label) => (
-                <span
-                  key={label}
-                  className="text-xs tracking-widest text-[#8C8279] border border-[#FAF7F2]/10 px-3 py-1.5"
-                >
-                  {label}
-                </span>
-              ))}
-            </div>
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 mt-2 text-xs tracking-[0.2em] uppercase text-gold border border-gold/40 px-5 py-2.5 hover:bg-gold hover:text-white transition-colors duration-300"
-            >
-              {t.footerPartnerCta}
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Bottom bar */}
-      <div className="max-w-7xl mx-auto mt-10 pt-8 border-t border-[#FAF7F2]/8 flex items-center justify-between text-xs text-[#8C8279] flex-wrap gap-4">
+      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-[#FAF7F2]/8 flex items-center justify-between text-xs text-[#8C8279] flex-wrap gap-4">
         <p>&copy; {new Date().getFullYear()} ALVINA. {t.footerRights}</p>
         <p className="tracking-widest">Istanbul · Paris · Monde</p>
       </div>
