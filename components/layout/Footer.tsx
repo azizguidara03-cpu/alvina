@@ -172,7 +172,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-[#FAF7F2]/8 flex items-center justify-between text-xs text-[#8C8279] flex-wrap gap-4">
         <p>&copy; {new Date().getFullYear()} ALVINA. {t.footerRights}</p>
-        <p className="tracking-widest">Istanbul · Paris · Monde</p>
+        <p className="tracking-widest">Istanbul · Sfax · Monde</p>
       </div>
     </motion.footer>
   );

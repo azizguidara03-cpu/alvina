@@ -306,3 +306,37 @@ select:focus {
   background-color: var(--gold);
   color: #fff;
 }
+
+/* ══════════════════════════════════════════════════
+   CUSTOM PRICE RANGE SLIDER
+   ══════════════════════════════════════════════════ */
+.price-range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-x;
+  z-index: 10;
+}
+.price-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  cursor: grab;
+}
+.price-range-input::-webkit-slider-thumb:active {
+  cursor: grabbing;
+}
+.price-range-input::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: grab;
+}
+.price-range-input::-webkit-slider-runnable-track { background: transparent; }
+.price-range-input::-moz-range-track { background: transparent; }
+.price-range-input:focus { outline: none; box-shadow: none; border-color: transparent; }
+
