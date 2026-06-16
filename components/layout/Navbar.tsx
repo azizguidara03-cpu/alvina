@@ -110,7 +110,7 @@ export default function Navbar() {
             id="search-btn"
             onClick={() => setSearchOpen(true)}
             aria-label={t.navSearch}
-            className={cn("hover:text-gold transition-colors duration-300", textClass)}
+            className={cn("hidden md:inline-flex hover:text-gold transition-colors duration-300", textClass)}
           >
             <Search size={18} strokeWidth={1.5} />
           </button>
@@ -191,7 +191,7 @@ export default function Navbar() {
             </button>
             <div className="mt-auto pb-12 border-t border-[var(--border-color)] pt-6">
               <p className="text-[var(--text-muted)] text-xs tracking-[0.2em] uppercase">
-                Istanbul · Paris · Monde
+                Istanbul · Sfax · Monde
               </p>
             </div>
           </motion.div>

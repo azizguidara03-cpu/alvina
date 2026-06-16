@@ -870,7 +870,7 @@ const translations = {
     aboutEvo3Desc: "Alvina mağazaları Orta Doğu, Avrupa ve Kuzey Afrika'da açılır.",
     aboutEvo4: "Dijital Çağ",
     aboutEvo4Desc: "alvinaonline.com'un lansmanı — tüm kataloğumuz dünya çapındaki kadınlar için erişilebilir.",
-    aboutEvo5: "SS2025 Koleksiyonu",
+    aboutEvo5: "SS2026 Koleksiyonu",
     aboutEvo5Desc: "Nihai koleksiyon: Türk zanaat mirasıyla harmanlanmış çağdaş tasarımın kutsanması.",
   },
 } as const;
