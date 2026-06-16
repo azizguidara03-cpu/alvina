@@ -243,7 +243,8 @@ export default function FilterSidebar({
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileFilterOpen(false)}
-              className="fixed inset-0 bg-black z-40 md:hidden"
+              className="fixed inset-0 bg-black z-[9998] md:hidden"
+              style={{ isolation: "auto" }}
             />
             <motion.div
               initial={{ y: "100%" }}
