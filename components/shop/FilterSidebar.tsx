@@ -243,15 +243,14 @@ export default function FilterSidebar({
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileFilterOpen(false)}
-              className="fixed inset-0 bg-black z-[9998] md:hidden"
-              style={{ isolation: "auto" }}
+              className="fixed top-0 left-0 w-full h-[100dvh] bg-black z-[9998] md:hidden"
             />
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="fixed bottom-0 left-0 right-0 bg-[var(--bg-card)] text-[var(--text-primary)] z-50 p-6 rounded-t-2xl md:hidden overflow-y-auto max-h-[80vh]"
+              className="fixed bottom-0 left-0 right-0 bg-[var(--bg-card)] text-[var(--text-primary)] z-[9999] p-6 rounded-t-2xl md:hidden overflow-y-auto max-h-[80dvh]"
             >
               <div className="flex justify-between items-center mb-6">
                 <h2 className="font-serif text-xl tracking-widest uppercase">{t.filterFilters}</h2>
