@@ -872,15 +872,6 @@ const translations = {
     aboutEvo4Desc: "alvinaonline.com'un lansmanı — tüm kataloğumuz dünya çapındaki kadınlar için erişilebilir.",
     aboutEvo5: "SS2025 Koleksiyonu",
     aboutEvo5Desc: "Nihai koleksiyon: Türk zanaat mirasıyla harmanlanmış çağdaş tasarımın kutsanması.",
-
-    contactPhoneLabel: "Telefon",
-    contactAddressLabel: "Adres",
-    contactHoursLabel: "Çalışma Saatleri",
-    contactIntro: "Koleksiyonlarımız, siparişleriniz veya özel randevu için ekibimiz hafta içi 09:00-18:00 arasında hizmetinizdedir.",
-    contactOptOrder: "Sipariş Takibi",
-    contactOptReturn: "İade ve Değişim",
-    contactOptPress: "Basın & Influencer",
-    contactOptOther: "Diğer soru",
   },
 } as const;
 
