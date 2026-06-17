@@ -154,7 +154,7 @@ export default function Footer() {
             ))}
           </ul>
           <div className="text-sm text-[#8C8279] mt-6">
-            <p className="tracking-widest mb-2">+905365203266</p>
+            <p className="tracking-widest mb-2">+905365203266\n+21698418423</p>
             <p className="tracking-widest mb-4">Alvina.sfax@gmail.com</p>
             <a 
               href="https://maps.app.goo.gl/iefehyP152gvEumC8"

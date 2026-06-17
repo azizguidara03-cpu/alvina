@@ -15,7 +15,7 @@ export default function ContactPage() {
   const { t } = useTranslation();
 
   const contactDetails = [
-    { icon: Phone, label: t.contactPhoneLabel, value: "+9053652032660" },
+    { icon: Phone, label: t.contactPhoneLabel, value: "+905365203266\n+21698418423" },
     { icon: Mail,  label: "E-mail",             value: "Alvina.sfax@gmail.com" },
     { icon: MapPin,label: t.contactAddressLabel, value: "Sfax, Tunisie" },
     { icon: Clock, label: t.contactHoursLabel,   value: "Lun–Ven · 09h–18h" },
